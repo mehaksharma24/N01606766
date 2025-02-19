@@ -1,0 +1,10 @@
+
+table{
+    background: blue;
+}
+.footer{
+    background: yellow;
+    display: flex;
+    justify-content: space-between;
+    padding:10px 0;
+}
