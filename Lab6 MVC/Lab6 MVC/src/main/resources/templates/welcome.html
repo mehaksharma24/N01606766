@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<h1>Welcome, <span class="text-info"><span th:text="${firstName}">First Name</span> <span th:text="${lastName}">Last Name</span></span>!</h1>
+<p class="text-success">You are logged in successfully!</p>
+</body>
+</html>
+
