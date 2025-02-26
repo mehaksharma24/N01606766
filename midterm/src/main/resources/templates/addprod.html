@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Dashboard</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td {
+            text-align: center;
+        }
+        a.button {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-btn {
+            background-color: #28a745;
+        }
+        .edit-btn {
+            background-color: #ffc107;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+        }
+        a.button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<h1>Product Dashboard</h1>
+<a href="/products/new" class="button add-btn">Add New Product</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.stock}"></td>
+        <td>
+            <a th:href="@{/products/edit/{id}(id=${product.id})}" class="button edit-btn">Edit</a>
+            <a th:href="@{/products/delete/{id}(id=${product.id})}" class="button delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

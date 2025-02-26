@@ -1,47 +1,68 @@
 package com.example.midterm.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.*;
 
-import java.util.Date;
-
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long productId;
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Entity
-    @Table(name = "product")
-    public class product {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id", updatable = false, nullable = false)
-        private Long id;
+    @Column(nullable = false, unique = true)
+    private String productName;
 
-        @Column(name = "prodname", nullable = false, length = 50)
-        private String prod;
+    private String productDescription;
 
-        @Column(name = "description", nullable = false, unique = true, length = 50)
-        private String description;
+    @Column(nullable = false)
+    private double productPrice;
 
-        @Column(name = "price", nullable = false, unique = true, length = 50)
-        private String price;
+    @Column(nullable = false)
+    private int productStock;
 
-        @Column(name = "stock", nullable = false, unique = true, length = 50)
-        private String stock;
+    public Long getProductId() {
+        return productId;
+    }
 
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public int getProductStock() {
+        return productStock;
+    }
+
+    public void setProductStock(int productStock) {
+        this.productStock = productStock;
     }
 }
-
-
-
-
-
-
-
-
-
